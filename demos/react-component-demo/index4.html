@@ -13,13 +13,19 @@
     constructor(...args) {
       super(...args);
       this.state = {
-        text: 'World'
+        text: 'World',
+        dateStatus: false,
       };
     }
 
     handleClick() {
+      let d = new Date();
+      let text = this.state.dateStatus ? 
+        'World' :
+        d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日';
       this.setState({
-        text: 'Clicked'
+        text: text,
+        dateStatus: !this.state.dateStatus,
       });
     }
 
