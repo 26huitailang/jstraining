@@ -3,11 +3,10 @@ var nightmare = Nightmare({ show: true });
 
 nightmare
   .goto('https://www.taobao.com/')
-  .type('#q', '电视机')
+  .type('#q', '卫衣')
   .click('form[action*="/search"] [type=submit]')
-  .wait(3000)
-  .exists('#spulist-grid')
-//  .wait('#spulist-grid')
+  .wait(100000)
+  // .wait('#spulist-grid')
   .evaluate(function () {
     return document.querySelector('#spulist-grid .grid-item .info-cont')
       .textContent.trim();
