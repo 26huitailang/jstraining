@@ -12,8 +12,15 @@ router.use(function(req, res, next) {
   next();
 });
 
+function middlewareDate(req, res, next) {
+  console.log('Time: ' + Date.now());
+  next();
+}
+router.use(middlewareDate);
+
 router.get('/', function(req, res) {
-  res.send('<h1>Hello World</h1>');
+  var name = req.query.name;
+  res.send('<h1>Hello ' + name + '</h1>');
 });
 
 router.get('/:name', function(req, res) {
