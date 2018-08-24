@@ -33,6 +33,22 @@ describe('test index.html', function() {
         done();
       })
   });
+  
+  it('标题是红色', function () {
+    var nightmare = Nightmare({ show: false });
+    nightmare
+      .goto('http://127.0.0.1:8000/index.html')
+      .wait(1000)
+      .evaluate(function () {
+        var elem = document.querySelector('h1');
+        return window.getComputedStyle(elem, null).color;
+      })
+      .end()
+      .then(function(text) {
+        expect(text).to.equal('rgb(255, 0, 0)');
+        //done();
+      })
+  });
 
 });
 
